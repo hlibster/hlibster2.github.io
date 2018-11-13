@@ -9,6 +9,9 @@ function inputLength() {
 function createListElement() {
 	var li = document.createElement("li");
 	li.appendChild(document.createTextNode(input.value));
+  var btn = document.createElement("button");
+  li.appendChild(btn);
+ btn.appendChild(document.createTextNode("Delete"));
 	ul.appendChild(li);
 	input.value = "";
 }
@@ -31,7 +34,10 @@ function addConsoleFeedback() {
 
 ul.onclick=function(event){
 	var target=event.target;
-	target.classList.toggle("done");
+  if(target.tagName == 'LI'){
+     target.classList.toggle("done");
+  }
+	
 }
 button.addEventListener("click", addListAfterClick);
 
