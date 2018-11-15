@@ -36,9 +36,13 @@ ul.onclick=function(event){
 	var target=event.target;
   if(target.tagName == 'LI'){
      target.classList.toggle("done");
+  } else if(target.tagName == 'BUTTON'){
+  	target.parentNode.remove();
   }
 	
 }
+
+
 button.addEventListener("click", addListAfterClick);
 
 input.addEventListener("keypress", addListAfterKeypress);
