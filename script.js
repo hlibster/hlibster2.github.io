@@ -75,6 +75,6 @@ color2 = b;
 body.style.background = "linear-gradient(to right, " + a + ", " + b + ")";	css.textContent = "Current css background: " + body.style.background + ";"}
 
 body.onload = setRandomBackgroundColor();
-
+button.addEventListener("click", setRandomBackgroundColor);
 
 
