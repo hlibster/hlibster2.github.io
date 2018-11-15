@@ -62,6 +62,19 @@ color1.addEventListener("input", setGradient);
 
 color2.addEventListener("input", setGradient);
 
+let button = getElementById("generate");
+
+function getRandomColor() { var length = 6; var chars = '0123456789ABCDEF'; var hex = '#'; while(length--) hex += chars[(Math.random() * 16) | 0]; return hex; } 
+
+
+function setRandomBackgroundColor() {
+let a = getRandomColor();
+let b = getRandomColor();
+color1 = a;
+color2 = b;
+body.style.background = "linear-gradient(to right, " + a + ", " + b + ")";	css.textContent = "Current css background: " + body.style.background + ";"}
+
+body.onload = setRandomBackgroundColor();
 
 
 
