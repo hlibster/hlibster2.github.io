@@ -9,6 +9,7 @@ function inputLength() {
 function createListElement() {
 	var li = document.createElement("li");
 	li.appendChild(document.createTextNode(input.value));
+	li.innerHTML = li.innerHTML + " ";
   var btn = document.createElement("button");
   li.appendChild(btn);
  btn.appendChild(document.createTextNode("Delete"));
