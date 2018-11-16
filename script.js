@@ -1,10 +1,46 @@
 var button = document.getElementById("enter");
 var input = document.getElementById("userinput");
 var ul = document.querySelector("ul");
-let css = document.querySelector("h3");
-let color1 = document.querySelector(".color1");
-let color2 = document.querySelector(".color2");
-let body = document.getElementById("gradient");
+var css = document.querySelector("h3");
+var color1 = document.querySelector(".color1");
+var color2 = document.querySelector(".color2");
+var body = document.getElementById("gradient");
+let button = document.getElementById("generate");
+
+function setGradient() {
+	body.style.background = 
+	"linear-gradient(to right, " 
+	+ color1.value 
+	+ ", " 
+	+ color2.value 
+	+ ")";
+
+	css.textContent = body.style.background + ";";
+}
+
+function getRandomColor() {
+  var length = 6;
+  var chars = '0123456789ABCDEF';
+  var hex = '#';
+  while(length--) hex += chars[(Math.random() * 16) | 0];
+  return hex;
+}
+
+function setRandomBackground() {
+	let a = getRandomColor();
+	let b = getRandomColor();
+	color1.value = a;
+	color2.value = b;
+	body.style.background = 
+	"linear-gradient(to right, " 
+	+ a 
+	+ ", " 
+	+ b 
+	+ ")";
+
+	css.textContent = body.style.background + ";";
+}
+
 
 
 function inputLength() {
@@ -37,11 +73,6 @@ function addListAfterKeypress(event) {
 function addConsoleFeedback() {
 	console.log("working");
 }
-function setGradient() {
-	body.style.background = "linear-gradient(to right, " + color1.value + ", " + color2.value + ")";
-	css.textContent = "Current css background: " + body.style.background + ";"
-}
-
 
 ul.onclick=function(event){
 	var target=event.target;
@@ -61,5 +92,11 @@ input.addEventListener("keypress", addListAfterKeypress);
 color1.addEventListener("input", setGradient);
 
 color2.addEventListener("input", setGradient);
- 
+
+body.onload = setRandomBackground();
+
+
+
+
+
 
