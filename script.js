@@ -113,21 +113,6 @@ function getOperatingSystem() {
     return "unknown";
 }
 
-document.write("Your OS: " + getOperatingSystem() + "<br/>" + "Your browser is: " + myFunction());
-
-button.addEventListener("click", addListAfterClick);
-
-input.addEventListener("keypress", addListAfterKeypress);
-
-color1.addEventListener("input", setGradient);
-
-color2.addEventListener("input", setGradient);
-
-body.onload = setRandomBackground();
-
-generate.addEventListener("click", setRandomBackground);
-
-
 function myFunction() { 
      if(navigator.userAgent.indexOf("OPR") != -1 ) 
     {
@@ -158,6 +143,54 @@ function myFunction() {
        return('unknown');
     }
     }
+
+
+function getScreenSize() {
+  let ratio = window.devicePixelRatio || 1;
+  let width = screen.width*ratio; 
+  let height = screen.height*ratio; 
+  let screenSize = (width + "*" + height);
+  return screenSize;
+}
+function getAvaliableScreenSize() {
+  let ratio = window.devicePixelRatio || 1;
+  let width = screen.availWidth*ratio;  
+  let height = screen.availHeight*ratio;  
+  let screenSize = (width + "*" + height);
+  return screenSize;
+}
+
+function screenOrientation() {
+  if (screen.width > screen.height) {
+    let orientation = "Horizontal";
+    return orientation;
+  } else if (screen.width < screen.height) {
+    let orientation = "Vertical";
+    return orientation;
+  }
+}
+
+button.addEventListener("click", addListAfterClick);
+
+input.addEventListener("keypress", addListAfterKeypress);
+
+color1.addEventListener("input", setGradient);
+
+color2.addEventListener("input", setGradient);
+
+body.onload = setRandomBackground();
+
+generate.addEventListener("click", setRandomBackground);
+
+document.write("Your OS is: " + getOperatingSystem() 
+  + "<br/>" + 
+  "Your browser is: " + myFunction() 
+  + "<br/>" +
+  "Device screen resolution: " + getScreenSize()
+  + "<br/>" +  
+  getAvaliableScreenSize()
+  + "<br/>" +
+  "Screen orientation: " + screenOrientation() );
     
 console.log(window.navigator);
 // document.write("Your browser is: " + myFunction());
