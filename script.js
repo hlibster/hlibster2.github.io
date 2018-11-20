@@ -5,43 +5,7 @@ var css = document.querySelector("h3");
 var color1 = document.querySelector(".color1");
 var color2 = document.querySelector(".color2");
 var body = document.getElementById("gradient");
-let button = document.getElementById("generate");
-
-function setGradient() {
-	body.style.background = 
-	"linear-gradient(to right, " 
-	+ color1.value 
-	+ ", " 
-	+ color2.value 
-	+ ")";
-
-	css.textContent = body.style.background + ";";
-}
-
-function getRandomColor() {
-  var length = 6;
-  var chars = '0123456789ABCDEF';
-  var hex = '#';
-  while(length--) hex += chars[(Math.random() * 16) | 0];
-  return hex;
-}
-
-function setRandomBackground() {
-	let a = getRandomColor();
-	let b = getRandomColor();
-	color1.value = a;
-	color2.value = b;
-	body.style.background = 
-	"linear-gradient(to right, " 
-	+ a 
-	+ ", " 
-	+ b 
-	+ ")";
-
-	css.textContent = body.style.background + ";";
-}
-
-
+let generate = document.getElementById("generate");
 
 function inputLength() {
 	return input.value.length;
@@ -84,6 +48,39 @@ ul.onclick=function(event){
 	
 }
 
+function setGradient() {
+	body.style.background = 
+	"linear-gradient(to right, " 
+	+ color1.value 
+	+ ", " 
+	+ color2.value 
+	+ ")";
+
+	css.textContent = body.style.background + ";";
+}
+
+function getRandomColor() {
+  var length = 6;
+  var chars = '0123456789ABCDEF';
+  var hex = '#';
+  while(length--) hex += chars[(Math.random() * 16) | 0];
+  return hex;
+}
+
+function setRandomBackground() {
+	let a = getRandomColor();
+	let b = getRandomColor();
+	color1.value = a;
+	color2.value = b;
+	body.style.background = 
+	"linear-gradient(to right, " 
+	+ a 
+	+ ", " 
+	+ b 
+	+ ")";
+
+	css.textContent = body.style.background + ";";
+}
 
 button.addEventListener("click", addListAfterClick);
 
@@ -94,6 +91,8 @@ color1.addEventListener("input", setGradient);
 color2.addEventListener("input", setGradient);
 
 body.onload = setRandomBackground();
+
+generate.addEventListener("click", setRandomBackground);
 
 
 
