@@ -82,6 +82,39 @@ function setRandomBackground() {
 	css.textContent = body.style.background + ";";
 }
 
+function getOperatingSystem() {
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    
+    if (/windows phone/i.test(userAgent)) {
+        return "Windows Phone";
+    }
+
+    else if (/android/i.test(userAgent)) {
+        return "Android";
+    }
+
+    
+    else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return "iOS";
+    }
+
+    else if (/Windows XP|Windows NT 6.0|Windows NT 6.1|Windows NT 6.2|WOW64|Windows 10.0|Windows NT 10.0/.test(userAgent)) {
+        return "Windows";
+    }
+
+	else if (/Linux|X11/.test(userAgent)) {
+        return "Linux";
+    }
+
+    else if (/Mac_PowerPC|Macintosh/.test(userAgent)) {
+        return "MacOS";
+    }
+
+    return "unknown";
+}
+
+document.write("Your OS: " + getOperatingSystem() + "<br/>" + "Your browser is: " + myFunction());
+
 button.addEventListener("click", addListAfterClick);
 
 input.addEventListener("keypress", addListAfterKeypress);
@@ -93,6 +126,41 @@ color2.addEventListener("input", setGradient);
 body.onload = setRandomBackground();
 
 generate.addEventListener("click", setRandomBackground);
+
+
+function myFunction() { 
+     if(navigator.userAgent.indexOf("OPR") != -1 ) 
+    {
+        return('Opera');
+    }
+    else if(navigator.userAgent.indexOf("Edge") != -1 ) 
+    {
+         return('Edge');
+    }
+    else if(navigator.userAgent.indexOf("Chrome") != -1 )
+    {
+        return('Chrome');
+    }
+    else if(navigator.userAgent.indexOf("Safari") != -1)
+    {
+        return('Safari');
+    }
+    else if(navigator.userAgent.indexOf("Firefox") != -1 ) 
+    {
+         return('Firefox');
+    }
+        else if((navigator.userAgent.indexOf("MSIE") != -1 ) || (!!document.documentMode == true )) //IF IE > 10
+    {
+      return('IE'); 
+    }  
+    else 
+    {
+       return('unknown');
+    }
+    }
+    
+console.log(window.navigator);
+// document.write("Your browser is: " + myFunction());
 
 
 
